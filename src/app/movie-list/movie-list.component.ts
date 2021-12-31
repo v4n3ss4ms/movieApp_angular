@@ -9,7 +9,7 @@ import { Movie } from '../movie';
 })
 export class MovieListComponent implements OnInit {
   moviesList!: Movie[];
-  displayedColumns: string[] = ['name', 'year', 'starring', 'rating'];
+  displayedColumns: string[] = ['name', 'starring', 'year', 'rating'];
 
   constructor(private moviesService: MoviesService ) {};
 
@@ -17,5 +17,11 @@ export class MovieListComponent implements OnInit {
     this.moviesList = this.moviesService.getMovies();
   };
 
-  
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    console.log(filterValue);
+    /*this.moviesList.filter = filterValue.trim().toLowerCase();*/
+  };
+  clickedRows = () => console.log('row clicked');
+  addMovie = () => console.log('add movie');
 }
