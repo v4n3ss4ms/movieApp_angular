@@ -1,11 +1,11 @@
 <div class='component-wrapper'>
   <div class="actions-movies-table">
-    <mat-form-field appearance="standard">
+    <mat-form-field appearance="standard" class="input-filter">
       <mat-label>Filter</mat-label>
       <input matInput (keyup)="applyFilter($event)" placeholder="Search..." #input>
     </mat-form-field>
 
-    <button mat-raised-button (click)="addMovie()" class="">
+    <button mat-raised-button (click)="addMovie()" class="add-button">
       Add movie
     </button>
   </div>

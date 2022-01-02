@@ -1,16 +1,16 @@
 <div class='component-wrapper'>
     <form [formGroup]="movieForm" (ngSubmit)="saveNewMovie()">
-        <mat-form-field class="example-full-width" appearance="fill">
+        <mat-form-field class="field-full-width" appearance="fill">
             <mat-label>Name</mat-label>
             <input matInput placeholder="Movie name" formControlName="movieName">
         </mat-form-field>
         
-        <mat-form-field class="example-full-width" appearance="fill">
+        <mat-form-field class="field-full-width" appearance="fill">
             <mat-label>Year (4 digits only)</mat-label>
             <input matInput placeholder="Movie year" formControlName="movieYear" ngModel pattern="^[0-9]{4}$">
         </mat-form-field>
 
-        <mat-form-field class="example-full-width" appearance="fill">
+        <mat-form-field class="field-full-width" appearance="fill">
             <mat-label>Starring</mat-label>
             <mat-select formControlName="movieStarring">
                 <mat-option *ngFor="let i of starrings" [value]="i">
@@ -18,12 +18,14 @@
                 </mat-option>
             </mat-select>
         </mat-form-field>
-        <button mat-raised-button type="submit">
-            Save it!
-        </button>
-        <button mat-raised-button (click)="goBack()">
-            Go back to list!
-        </button>
+        <div class="new-buttons">
+            <button mat-raised-button type="submit">
+                Save it!
+            </button>
+            <button mat-raised-button (click)="goBack()">
+                Go back to list!
+            </button>
+        </div>
     </form>
 </div>
 
