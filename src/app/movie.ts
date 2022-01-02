@@ -2,6 +2,6 @@ export interface Movie {
     id: number,
     name: string,
     year: number,
-    actor: string,
+    starring: string,
     rating?: number,
 }

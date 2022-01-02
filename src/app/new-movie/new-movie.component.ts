@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MoviesService } from '../movies.service';
+import { Movie } from '../movie';
 import { FormGroup, FormControl, Validators, ValidatorFn, AbstractControl, ValidationErrors } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -25,10 +26,17 @@ export class NewMovieComponent implements OnInit {
   }
 
   saveNewMovie() {
-    console.log(this.movieForm);
+    const newMovie = {
+      id: this.moviesService.getNewId(),
+      name: this.movieForm.value.movieName,
+      year: parseInt(this.movieForm.value.movieYear, 10),
+      starring: this.movieForm.value.movieStarring,
+    };
+
+    this.moviesService.addMovies(newMovie);
+    this.goBack();
   }
 
   goBack = () => this._router.navigateByUrl('');
-
 
 }

@@ -11,40 +11,40 @@ export class MoviesService {
       id: 1,
       name: 'ET',
       year: 1975,
-      actor: 'Drew Barrymore',
+      starring: 'Drew Barrymore',
     },
     {
       id: 2,
       name: 'Kill Bill',
       year: 1998,
-      actor: 'Dee Wallace',
+      starring: 'Dee Wallace',
       rating: 5,
     },
     {
       id: 3,
       name: 'Matrix',
       year: 2021,
-      actor: 'Erika Eleniak',
+      starring: 'Erika Eleniak',
       rating: 10,
     },
     {
       id: 4,
       name: 'Spiderman',
       year: 2010,
-      actor: 'Robert MacNaughton',
+      starring: 'Robert MacNaughton',
     },
     {
       id: 5,
       name: 'Toy Story',
       year: 1998,
-      actor: 'Peter Coyote',
+      starring: 'Peter Coyote',
       rating: 9,
     },
     {
       id: 6,
       name: 'Back to the future',
       year: 1981,
-      actor: 'C. Thomas Howell',
+      starring: 'C. Thomas Howell',
       rating: 10,
     }
   ];
@@ -67,5 +67,8 @@ export class MoviesService {
   updateMovies(data:Movie) {
     const index:number = this.moviesListMocked.findIndex((e:Movie) => e.id === data.id);
     this.moviesListMocked[index] = data;
+  };
+  getNewId(){
+    return this.moviesListMocked.length + 1;
   };
 }

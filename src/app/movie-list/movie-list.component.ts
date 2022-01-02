@@ -34,10 +34,5 @@ export class MovieListComponent implements OnInit {
       width: '250px',
       data: e,
     });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-    });
   }
-
 }
