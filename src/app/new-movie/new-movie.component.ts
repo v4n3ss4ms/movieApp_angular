@@ -3,14 +3,6 @@ import { MoviesService } from '../movies.service';
 import { FormGroup, FormControl, Validators, ValidatorFn, AbstractControl, ValidationErrors } from '@angular/forms';
 import { Router } from '@angular/router';
 
-const validateYear = function(): ValidatorFn {
-  const yearRe: RegExp = /^[0-9]{4}$/;
-  return (control: AbstractControl): ValidationErrors | null => {
-    const forbidden = yearRe.test(control.value);
-    return forbidden ? {forbiddenYear: {value: control.value}} : null;
-  };
-}
-
 @Component({
   selector: 'app-new-movie',
   templateUrl: './new-movie.component.html',
@@ -22,7 +14,7 @@ export class NewMovieComponent implements OnInit {
 
   movieForm = new FormGroup({
     movieName: new FormControl('', Validators.required),
-    movieYear: new FormControl('', [Validators.required, validateYear]),
+    movieYear: new FormControl('', Validators.required),
     movieStarring: new FormControl('', Validators.required),
   });
 
