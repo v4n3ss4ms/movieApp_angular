@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MoviesService } from '../movies.service';
 import { Movie } from '../movie'; 
+import { RatingPopupComponent } from '../rating-popup/rating-popup.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-movie-list',
@@ -11,7 +14,7 @@ export class MovieListComponent implements OnInit {
   moviesList!: Movie[];
   displayedColumns: string[] = ['name', 'starring', 'year', 'rating'];
 
-  constructor(private moviesService: MoviesService ) {};
+  constructor(private moviesService: MoviesService, public dialog: MatDialog, private _router: Router ) {};
 
   ngOnInit(): void {
     this.moviesList = this.moviesService.getMovies();
@@ -22,6 +25,19 @@ export class MovieListComponent implements OnInit {
     console.log(filterValue);
     /*this.moviesList.filter = filterValue.trim().toLowerCase();*/
   };
-  clickedRows = () => console.log('row clicked');
-  addMovie = () => console.log('add movie');
+  
+  addMovie = () => this._router.navigateByUrl('/new');
+
+  openRatingDialog(e: Movie): void {
+    console.log(e);
+    const dialogRef = this.dialog.open(RatingPopupComponent, {
+      width: '250px',
+      data: e,
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
+
 }
