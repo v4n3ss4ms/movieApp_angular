@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatDialogModule, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 import { RatingPopupComponent } from './rating-popup.component';
 
@@ -8,7 +9,12 @@ describe('RatingPopupComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RatingPopupComponent ]
+      imports: [MatDialogModule],
+      declarations: [ RatingPopupComponent ],
+      providers: [
+        { provide: MAT_DIALOG_DATA, useValue: {} },
+        { provide: MatDialogRef, useValue: {} },
+      ]
     })
     .compileComponents();
   });
