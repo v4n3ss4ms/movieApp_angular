@@ -2,7 +2,10 @@
   <div class="actions-movies-table">
     <mat-form-field appearance="standard" class="input-filter">
       <mat-label>Search by Movie name or by Starring</mat-label>
-      <input matInput (keyup)="applyFilter($event)" placeholder="Search..." #input>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Search..." #input  [(ngModel)]="filter">
+      <button *ngIf="filter" matSuffix mat-icon-button aria-label="Clear" (click)="clearFilter()">
+        <mat-icon>close</mat-icon>
+      </button>
     </mat-form-field>
 
     <button mat-raised-button (click)="addMovie()" class="add-button">

@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 export class MovieListComponent implements OnInit {
   moviesList!: Movie[];
   displayedColumns: string[] = ['name', 'starring', 'year', 'rating'];
+  filter: string = '';
   filteredMoviesList!: Movie[];
 
   constructor(private moviesService: MoviesService, public dialog: MatDialog, private _router: Router ) {};
@@ -23,8 +24,12 @@ export class MovieListComponent implements OnInit {
   };
 
   applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value.toLowerCase();
-    this.filteredMoviesList = this.moviesList.filter((e) => e.name.toLowerCase().includes(filterValue) || e.starring.toLowerCase().includes(filterValue));
+    this.filteredMoviesList = this.moviesList.filter((e) => e.name.toLowerCase().includes(this.filter) || e.starring.toLowerCase().includes(this.filter));
+  };
+
+  clearFilter() {
+    this.filter = '';
+    this.filteredMoviesList = this.moviesList;
   };
   
   addMovie = () => this._router.navigateByUrl('/new');
