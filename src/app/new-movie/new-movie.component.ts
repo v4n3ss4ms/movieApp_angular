@@ -26,7 +26,7 @@ export class NewMovieComponent implements OnInit {
   }
 
   saveNewMovie() {
-    const newMovie = {
+    const newMovie: Movie = {
       id: this.moviesService.getNewId(),
       name: this.movieForm.value.movieName,
       year: parseInt(this.movieForm.value.movieYear, 10),

@@ -1,7 +1,7 @@
 <div class='component-wrapper'>
   <div class="actions-movies-table">
     <mat-form-field appearance="standard" class="input-filter">
-      <mat-label>Filter</mat-label>
+      <mat-label>Search by Movie name or by Starring</mat-label>
       <input matInput (keyup)="applyFilter($event)" placeholder="Search..." #input>
     </mat-form-field>
 
@@ -10,7 +10,7 @@
     </button>
   </div>
 
-  <table mat-table [dataSource]="moviesList" class="mat-elevation-z8 movies-table">
+  <table mat-table [dataSource]="filteredMoviesList" class="mat-elevation-z8 movies-table">
       <!-- ID Column -->
       <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef> ID </th>

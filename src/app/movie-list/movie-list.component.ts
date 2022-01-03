@@ -13,23 +13,23 @@ import { Router } from '@angular/router';
 export class MovieListComponent implements OnInit {
   moviesList!: Movie[];
   displayedColumns: string[] = ['name', 'starring', 'year', 'rating'];
+  filteredMoviesList!: Movie[];
 
   constructor(private moviesService: MoviesService, public dialog: MatDialog, private _router: Router ) {};
 
   ngOnInit(): void {
     this.moviesList = this.moviesService.getMovies();
+    this.filteredMoviesList = this.moviesList;
   };
 
   applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    console.log(filterValue);
-    /*this.moviesList.filter = filterValue.trim().toLowerCase();*/
+    const filterValue = (event.target as HTMLInputElement).value.toLowerCase();
+    this.filteredMoviesList = this.moviesList.filter((e) => e.name.toLowerCase().includes(filterValue) || e.starring.toLowerCase().includes(filterValue));
   };
   
   addMovie = () => this._router.navigateByUrl('/new');
 
   openRatingDialog(e: Movie): void {
-    console.log(e);
     const dialogRef = this.dialog.open(RatingPopupComponent, {
       width: '250px',
       data: e,
