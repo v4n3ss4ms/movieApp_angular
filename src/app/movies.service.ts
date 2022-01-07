@@ -69,6 +69,7 @@ export class MoviesService {
     this.moviesListMocked[index] = data;
   };
   getNewId(){
-    return this.moviesListMocked.length + 1;
+    const lastItem: number = this.moviesListMocked[this.moviesListMocked.length - 1].id;
+    return  lastItem + 1; // For security it should be a non repeated random number
   };
 }

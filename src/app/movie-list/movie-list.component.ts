@@ -23,7 +23,7 @@ export class MovieListComponent implements OnInit {
     this.filteredMoviesList = this.moviesList;
   };
 
-  applyFilter(event: Event) {
+  applyFilter() {
     this.filteredMoviesList = this.moviesList.filter((e) => e.name.toLowerCase().includes(this.filter) || e.starring.toLowerCase().includes(this.filter));
   };
 
